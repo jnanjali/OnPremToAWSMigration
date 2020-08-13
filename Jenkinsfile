@@ -15,7 +15,7 @@ node {
     }
     
     stage('Deploy blue container') {
-	withAWS(region:'us-east-1', credentials:'ecr_credentials') {
+	script {
 		sh '''
 			kubectl apply -f ./blue.yaml
 		'''
