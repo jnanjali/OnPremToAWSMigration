@@ -15,12 +15,10 @@ node {
     }
     
     stage('Deploy blue container') {
-			steps {
-				withAWS(region:'us-east-1', credentials:'ecr_credentials') {
-					sh '''
-						kubectl apply -f ./blue.yaml
-					'''
-				}
-			}
-		}
+	withAWS(region:'us-east-1', credentials:'ecr_credentials') {
+		sh '''
+			kubectl apply -f ./blue.yaml
+		'''
+	}
+    }
 }
