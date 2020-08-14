@@ -13,7 +13,15 @@ node {
 
         app = docker.build("mynginx")
     }
-    
+    stage('get kubeconfig for eks cluster') {
+	script {
+		withAWS(region:'us-west-2', credentials:'aws-creds') {
+		     sh '''
+			 aws eks --region us-west-2 update-kubeconfig --name fabulous-wardrobe-1597385869
+		     '''
+                }
+        }
+    }
     stage('Deploy blue container') {
 	script {
 		sh '''
