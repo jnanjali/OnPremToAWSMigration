@@ -24,9 +24,11 @@ node {
     }
     stage('Deploy blue container') {
 	script {
-		sh '''
-			kubectl apply -f ./blue.yaml
-		'''
+		withAWS(region:'us-west-2', credentials:'aws-creds') {
+			sh '''
+				kubectl apply -f ./blue.yaml
+			'''
+		}
 	}
     }
 }
