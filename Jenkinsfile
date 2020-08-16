@@ -35,9 +35,7 @@ node {
     stage('Deploy blue container') {
 	script {
 		withAWS(region:'us-west-2', credentials:'aws-creds') {
-			sh '''
-                            sed  -i -e "s/BUILD_TAG/${env.BUILD_ID}/g" blue.yaml
-                           '''
+			sh  "sed  -i -e "s/BUILD_TAG/${env.BUILD_ID}/g" blue.yaml"
 			sh "kubectl apply -f blue.yaml"
 		}
 	}
