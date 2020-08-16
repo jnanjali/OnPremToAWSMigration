@@ -13,6 +13,14 @@ node {
 
         app = docker.build("mynginx")
     }
+    stage('push image to dockerhub') {
+	    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub_creds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
+					sh '''
+						docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+						docker push anjalicurie/mynginx:12
+					'''
+	    }
+    }
     stage('get kubeconfig for eks cluster') {
 	script {
 		withAWS(region:'us-west-2', credentials:'aws-creds') {
