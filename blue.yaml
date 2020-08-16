@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: "anjalicurie/nginx:BUILD_TAG"
+        image: "anjalicurie/mynginx:BUILD_TAG"
         ports:
         - containerPort: 80
