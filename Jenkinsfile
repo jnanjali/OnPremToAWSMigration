@@ -15,11 +15,12 @@ node {
     }
     stage('push image to dockerhub') {
 	    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub_creds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
-					sh '''
-						docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-						docker tag "mynginx:${env.BUILD_ID}" "anjalicurie/mynginx:${env.BUILD_ID}"
-						docker push "anjalicurie/mynginx:${env.BUILD_ID}"
-					'''
+			sh '''
+				docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+			'''
+		    sh 	"docker tag mynginx:${env.BUILD_ID} anjalicurie/mynginx:${env.BUILD_ID}"
+		    sh  "docker push anjalicurie/mynginx:${env.BUILD_ID}"
+						
 	    }
     }
     stage('get kubeconfig for eks cluster') {
