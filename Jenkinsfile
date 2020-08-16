@@ -35,31 +35,7 @@ node {
     stage('Deploy blue container') {
 	script {
 		withAWS(region:'us-west-2', credentials:'aws-creds') {
-			sh "
-			kubectl apply -f - <<EOF
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-  labels:
-    app: nginx
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: anjalicurie/mynginx:${env.BUILD_ID}
-        ports:
-        - containerPort: 80
-EOF
-			"
+			sh "kubectl run nginx --image=anjalicurie/mynginx:${env.BUILD_ID}"
 		}
 	}
     }
