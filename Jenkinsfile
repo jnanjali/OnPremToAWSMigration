@@ -11,13 +11,13 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("mynginx").push(${env.BUILD_TAG})
+        app = docker.build("mynginx":${BUILD_NUMBER})
     }
     stage('push image to dockerhub') {
 	    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub_creds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
 						docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-						docker push anjalicurie/mynginx:${env.BUILD_TAG}
+						docker push anjalicurie/mynginx:${BUILD_NUMBER}
 					'''
 	    }
     }
