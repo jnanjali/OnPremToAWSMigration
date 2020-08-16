@@ -17,7 +17,7 @@ node {
 	    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub_creds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
 						docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-						docker push anjalicurie/mynginx:$BUILD_NUMBER
+						docker push anjalicurie/mynginx:${env.BUILD_TAG}
 					'''
 	    }
     }
