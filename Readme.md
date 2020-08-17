@@ -16,12 +16,12 @@ For this project, i have chosen the following tools:-
 - AWS as our choice of public cloud
 - Jenkins server running on EC2(AWS)
 - Jenkins plugins for various integrations:-
-  - [ CloudBees Docker Build and Publish ] (https://plugins.jenkins.io/docker-build-publish/)
-  - [ CloudBees AWS Credentials ] (https://plugins.jenkins.io/aws-credentials/)
-  - [ BlueOcean ] (https://plugins.jenkins.io/blueocean/) 
-  - [ Credentials ] (https://plugins.jenkins.io/credentials/)
-  - [ Pipeline AWS Steps ] (https://plugins.jenkins.io/pipeline-aws/)
-  - [ Pipeline SCM Step ] (https://plugins.jenkins.io/workflow-scm-step/)
+  - [CloudBees Docker Build and Publish](https://plugins.jenkins.io/docker-build-publish/)
+  - [CloudBees AWS Credentials](https://plugins.jenkins.io/aws-credentials/)
+  - [BlueOcean](https://plugins.jenkins.io/blueocean/) 
+  - [Credentials](https://plugins.jenkins.io/credentials/)
+  - [Pipeline AWS Steps](https://plugins.jenkins.io/pipeline-aws/)
+  - [Pipeline SCM Step](https://plugins.jenkins.io/workflow-scm-step/)
 - eksctl cli to deploy Kubernetes clusters on AWS
 - aws cli
 - Kubectl 
@@ -84,6 +84,9 @@ Steps are present in jenkins/install-docker.sh
 
 
 ### Install aws cli on EC2 Server running Ubuntu
+```
+
+```
 
 ### Install kubectl cli on EC2 Server running Ubuntu
 
