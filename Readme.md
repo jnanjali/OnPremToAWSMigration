@@ -16,12 +16,12 @@ For this project, i have chosen the following tools:-
 - AWS as our choice of public cloud
 - Jenkins server running on EC2(AWS)
 - Jenkins plugins for various integrations:-
-  - [ CloudBees Docker Build and Publish] (https://plugins.jenkins.io/docker-build-publish/)
+  - [ CloudBees Docker Build and Publish ] (https://plugins.jenkins.io/docker-build-publish/)
   - [ CloudBees AWS Credentials ] (https://plugins.jenkins.io/aws-credentials/)
-  - [ BlueOcean] (https://plugins.jenkins.io/blueocean/) 
-  - [ Credentials] (https://plugins.jenkins.io/credentials/)
-  - [ Pipeline AWS Steps] (https://plugins.jenkins.io/pipeline-aws/)
-  - [ Pipeline SCM Step] (https://plugins.jenkins.io/workflow-scm-step/)
+  - [ BlueOcean ] (https://plugins.jenkins.io/blueocean/) 
+  - [ Credentials ] (https://plugins.jenkins.io/credentials/)
+  - [ Pipeline AWS Steps ] (https://plugins.jenkins.io/pipeline-aws/)
+  - [ Pipeline SCM Step ] (https://plugins.jenkins.io/workflow-scm-step/)
 - eksctl cli to deploy Kubernetes clusters on AWS
 - aws cli
 - Kubectl 
@@ -34,26 +34,47 @@ For this project, i have chosen the following tools:-
 - create Dockerfile 
 
 ### Test this docker image locally using Docker Desktop
-docker build -t anjalicurie/mynginx
-docker run -p 80:80 anjalicurie/mynginx
 
+```
+docker build -t anjalicurie/mynginx .
+docker run -p 80:80 anjalicurie/mynginx
 curl localhost:80
 
-you should see your customized response here
+<!doctype html>
+<html>
+  <head>
+    <title>Static HTML Site</title>
+  </head>
+  <body>
+    <p>Hello World! my name is AJ <strong>CSS</strong> or <strong>JavaScript</strong>.</p>
+  </body>
+</html>
 
-### Setup a dockerub account
+```
 
+### Setup a dockerhub account
+
+- create a new repository
 
 ### Push your docker image to dockerhub
+
+```
+docker login -u anjalicurie
+docker push anjalicurie/mynginx
+```
 
 ### Setup Kubernetes using docker for desktop
 
 ### deploy your nginx webserver in kubernetes on docker Desktop
 
+kubectl apply -f ./blue.yaml
+
+
 ### Setup a EC2 Server on AWS with Ubuntu image
 
 This is currently done using the AWS console. Later this project will be enhanced to do this
 using CloudFormation.
+
 
 ### Install Jenkins on EC2 Server running Ubuntu
 Steps are present in jenkins/install-jenkins.sh
@@ -76,7 +97,6 @@ Steps are present in jenkins/install-docker.sh
 
 #### Store dockerhub credentials
 
-
 #### Store AWS credentials
 
 #### Store git token credentials 
@@ -85,16 +105,16 @@ Steps are present in jenkins/install-docker.sh
 
 ### Create Jenkinsfile in your git repo
 
-#### Stage 1 Clone repository
+* Stage 1 Clone repository
 
-#### Stage 2 Build docker image with build number as docker tag
+* Stage 2 Build docker image with build number as docker tag
 
-#### Stage 3 Push built docker image to dockerhub with right tag
+* Stage 3 Push built docker image to dockerhub with right tag
 
-#### Stage 4 Get the kubeconfig file for the deployed Kubernetes cluster from AWS
+* Stage 4 Get the kubeconfig file for the deployed Kubernetes cluster from AWS
  
-#### Stage 5 Deploy a blue version of your application container using Kubernetes
+* Stage 5 Deploy a blue version of your application container using Kubernetes
 
-#### Stage 6 Test it using port forwarding
+* Stage 6 Test it using port forwarding
 
 ### Tear down everything and save cost
