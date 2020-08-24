@@ -178,6 +178,11 @@ curl localhost:7000
 ```
 
 ### Tear down everything and save cost
+```
+eksctl delete cluster
+```
 
 
 ### Debugging Jenkins
+
+["No Valid Crumb was included in the request"](https://github.com/jnanjali/OnPremToAWSMigration/wiki/No-Valid-Crumb-was-included-in-the-request)
