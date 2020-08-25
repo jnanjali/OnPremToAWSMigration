@@ -67,8 +67,9 @@ docker push anjalicurie/mynginx
 
 ### deploy your nginx webserver in kubernetes on docker Desktop
 
+```
 kubectl apply -f ./blue.yaml
-
+```
 
 ### Setup a EC2 Server on AWS with Ubuntu image
 
@@ -77,10 +78,10 @@ using CloudFormation.
 
 
 ### Install Jenkins on EC2 Server running Ubuntu
-Steps are present in jenkins/install-jenkins.sh
+Steps are present in `jenkins/install-jenkins.sh`
 
 ### Install docker on EC2 Server running Ubuntu
-Steps are present in jenkins/install-docker.sh
+Steps are present in `jenkins/install-docker.sh`
 
 
 ### Install aws cli on EC2 Server running Ubuntu
@@ -181,7 +182,6 @@ curl localhost:7000
 ```
 eksctl delete cluster
 ```
-
 
 ### Debugging Jenkins
 
