@@ -4,10 +4,12 @@
 
 The goal of this project is to show how to setup a fully automated CI/CD system
 in public cloud. All code changes in git will trigger a build and test pipeline
-that will generate a new Docker image that will be deployed using Kubernetes.
+that will generate a new Docker image that will be pushed to dockerhub and deployed 
+using Kubernetes.
 
-I will provide enough details in this project so that anyone can clone this repo and
-will be able to follow along to replicate the exact setup
+I have provided enough details in this project so that anyone can clone this repo and
+will be able to follow along to replicate the exact setup. Please open an issue if 
+you see bugs.
 
 
 ## Prerequisites
@@ -64,6 +66,7 @@ docker push anjalicurie/mynginx
 ```
 
 ### Setup Kubernetes using docker for desktop
+Make sure you check the box that says `Enable Kubernetes`
 
 ### deploy your nginx webserver in kubernetes on docker Desktop
 
@@ -75,6 +78,11 @@ kubectl apply -f ./blue.yaml
 
 This is currently done using the AWS console. Later this project will be enhanced to do this
 using CloudFormation.
+
+- t2.micro
+- public subnet
+- EBS volume attached 8gb
+- security group with inbound rules allowing port 22(ssh) and port 8080(jenkins)
 
 
 ### Install Jenkins on EC2 Server running Ubuntu
@@ -99,6 +107,11 @@ kubectl version --client
 ```
 
 ### Install eksctl cli on EC2 Server running Ubuntu
+```
+brew tap weaveworks/tap
+brew install weaveworks/tap/eksctl
+```
+
 
 
 ### Install EKS Cluster using eksctl
@@ -125,6 +138,7 @@ Manage Jenkins--->Manage Credentials
 #### Store git token credentials 
 
 ### Connect your github repo with Jenkins server
+TODO
 
 ### Create Jenkinsfile in your git repo with the following stages
 
